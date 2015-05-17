@@ -1,6 +1,6 @@
 module Counter
   module Cache
-    module Redis
+    module Credis
       VERSION = "0.0.1"
     end
   end

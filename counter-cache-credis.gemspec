@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'counter/cache/redis/version'
+require 'counter/cache/credis/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "counter-cache-redis"
-  spec.version       = Counter::Cache::Redis::VERSION
+  spec.name          = "counter-cache-credis"
+  spec.version       = Counter::Cache::Credis::VERSION
   spec.authors       = ["linjunzhu"]
   spec.email         = ["linjunzhugg@gmail.com"]
   spec.summary       = %q{将各种浏览量，点赞数之类的存于缓存}
