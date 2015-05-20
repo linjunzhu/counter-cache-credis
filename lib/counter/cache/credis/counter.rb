@@ -11,7 +11,7 @@ module Counter
         def defind_column_getter(column)
           self.class_eval do
             define_method("get_#{column}_cache") do
-              self.send(column) + Redis.new.get("#{self.class.table_name}/#{column}#{self.id}").to_i
+              self.send(column) + RedisCli.new.get("#{self.class.table_name}/#{column}#{self.id}").to_i
             end
           end
         end
@@ -33,6 +33,7 @@ module Counter
         # 修改值
         def update_counter(column = 'views_count')
           redis = RedisCli.new
+          p redis
           views_count_redis = redis.get("#{self.class.table_name}/#{column}#{self.id}").to_i
           views_count_redis = 0 if !views_count_redis
           views_count_redis += 1
