@@ -1,4 +1,4 @@
-# Counter::Cache::Redis
+# Counter::Cache::CRedis
 
 Set a counter for model through redis in order to improve perfomance.
 
@@ -51,6 +51,11 @@ production:
 
 ### Use
 
+```ruby
+class Student < ActiveRecord::Base
+    counter_cache_redis
+end
+```
 ```ruby
 student = Student.first
 # It will increase itself by one
