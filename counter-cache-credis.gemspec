@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["linjunzhugg@gmail.com"]
   spec.summary       = %q{将各种浏览量，点赞数之类的存于缓存}
   spec.description   = %q{将各种浏览量，点赞数之类的存于缓存，这样就不会每次都去 DB 修改}
-  spec.homepage      = "linjunzhu.me"
+  spec.homepage      = "http://linjunzhu.me"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

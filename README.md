@@ -1,10 +1,6 @@
 # Counter::Cache::Redis
 
-未完成。
-
-实现效果：
-
-能根据不同表来设置不同字段，读取也在 redis，而不用再通过 DB
+Set a counter for model through redis in order to improve perfomance.
 
 ## Installation
 
@@ -12,6 +8,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 gem 'counter-cache-redis'
+gem 'redis'
 ```
 
 And then execute:
@@ -24,7 +21,58 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Init
+
+```ruby
+rails g redis_config
+```
+It will create `config/redis.yml`
+
+```ruby
+# redis.yml
+redis: &redis
+  redis_port: 6379
+  redis_namespace: 'redis'
+  redis_db: 0
+
+test:
+  <<: *redis
+  redis_host: 'localhost'
+
+development:
+  <<: *redis
+  redis_host: 'localhost'
+
+production:
+  <<: *redis
+  redis_host: 'localhost'
+
+```
+
+### Use
+
+```ruby
+student = Student.first
+# It will increase itself by one
+student.update_counter
+# get views_count through redis
+student.get_views_count_cache
+```
+
+### Configure
+```ruby
+class Student < ActiveRecord::Base
+  # select custom column
+  counter_cache_redis column: :hello_count
+end
+```
+```ruby
+class Student < ActiveRecord::Base
+  # When cache of redis is bigger than 50, it will write to db and refresh redis
+  # default is 20
+  counter_cache_redis delay: 50
+end
+```
 
 ## Contributing
 

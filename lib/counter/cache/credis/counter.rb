@@ -18,7 +18,7 @@ module Counter
 
         def counter_cache_redis(options = {})
           mattr_accessor :counter_delay, :column
-          self.counter_delay = options[:delay] || 1
+          self.counter_delay = options[:delay] || 20
           self.column = options[:column] || 'views_count'
           defind_column_getter if options[:column]
           include Counter::Cache::Credis::InstanceMethods
