@@ -1,5 +1,3 @@
-require 'pry'
-
 module Counter
   module Cache
     module Credis
@@ -8,7 +6,6 @@ module Counter
         receiver.extend ClassMethods
       end
 
-      # 类方法
       module ClassMethods
 
         def defind_column_getter
@@ -29,13 +26,11 @@ module Counter
 
       end
 
-      # 实例方法
       module InstanceMethods
 
         # 修改值
         def update_counter
-          # 这里要想下如何解决redis的配置问题
-          redis = Redis.new
+          redis = RedisCli.new
           # 先读出redis中的值
           views_count_redis = redis.get("#{self.class.table_name}/#{self.id}").to_i
           views_count_redis = 0 if !views_count_redis
