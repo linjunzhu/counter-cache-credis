@@ -7,7 +7,7 @@ Set a counter for model through redis in order to improve perfomance.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'counter-cache-redis'
+gem 'counter-cache-credis'
 gem 'redis'
 ```
 
