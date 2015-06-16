@@ -59,7 +59,9 @@ end
 ```ruby
 student = Student.first
 # It will increase itself by one
-student.update_counter
+student.increase_counter
+# It will reduce itself by one
+student.reduce_counter
 # get views_count through redis
 student.get_views_count_cache
 ```
