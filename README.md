@@ -60,6 +60,8 @@ end
 student = Student.first
 # It will increase itself by one
 student.increase_counter
+# increase selected column
+student.increase_counter(:hello_count)
 # It will reduce itself by one
 student.reduce_counter
 # get views_count through redis
